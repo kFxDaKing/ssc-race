@@ -13,21 +13,22 @@ namespace SSC.Client
 {
     public class RaceClient : BaseScript
     {
-        private static RaceClient _instance;
-        private EventWrapper _eventWrapper;
+        public static RaceClient Instance { get; private set; }
+        public RaceEventCollection EventCollection { get; private set; }
 
-        public static RaceClient Instance => _instance;
-        public EventWrapper EventWrapper => _eventWrapper;
-
-        private MessageHandlers messageHandler;
-        private RaceEventHandlers raceEventHandlers = new RaceEventHandlers();
+        private MessageHandlers messageHandlers;
+        private RaceEventHandlers raceEventHandlers;
 
         private Race.Race CurrentRace;
         private bool IsInCreator = false;
 
         public RaceClient()
         {
-            messageHandler = new MessageHandlers(EventHandlers);
+            Instance = this;
+            EventCollection = new RaceEventCollection((name, func) => EventHandlers.Add(name, func));
+
+            messageHandlers = new MessageHandlers();
+            raceEventHandlers = new RaceEventHandlers();
 
             EventHandlers.Add("ssrc.race::announceRace", new Action<string>(
                 raceEventHandlers.OnRaceAnnounced

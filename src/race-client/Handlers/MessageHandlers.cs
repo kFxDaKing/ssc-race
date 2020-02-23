@@ -1,14 +1,18 @@
 ﻿using System;
 using CitizenFX.Core;
 using SSC.Client.Util;
+using SSC.Shared.Wrappers;
 
 namespace SSC.Client.Handlers
 {
     public class MessageHandlers
     {
-        public MessageHandlers(EventHandlerDictionary events)
+        public delegate void MessageActionRejected(string action, string reason);
+
+        public MessageHandlers()
         {
-            events.Add("ssrc.race::rejected", new Action<string, string>(OnActionRejected));
+            RaceEventCollection ev = RaceClient.Instance.EventCollection;
+            ev.RegisterEvent<MessageActionRejected>(OnActionRejected);
         }
         
         public void OnActionRejected(string action, string reason)

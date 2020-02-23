@@ -2,25 +2,25 @@
 
 namespace SSC.Shared.Wrappers
 {
-    public delegate void EventWrapperBackingFunction(string eventName, Delegate backingFunction);
+    public delegate void RaceEventProxyFunction(string eventName, Delegate proxy);
 
-    public class EventWrapper
+    public class RaceEventCollection
     {
         private string PROJECT_NAME = "ssc-racing";
         private string MODULE_NAME = "race";
 
-        private EventWrapperBackingFunction backingFunction;
+        private RaceEventProxyFunction proxyFunction;
 
-        public EventWrapper(EventWrapperBackingFunction backingFunc)
+        public RaceEventCollection(RaceEventProxyFunction proxy)
         {
-            backingFunction = backingFunc;
+            proxyFunction = proxy;
         }
 
         public void RegisterEvent<T>(T delegateInstance) where T : Delegate
         {
             string methodName = typeof(T).Name;
             string eventName = $"{PROJECT_NAME}::{MODULE_NAME}::{methodName}";
-            backingFunction?.Invoke(eventName, delegateInstance);
+            proxyFunction?.Invoke(eventName, delegateInstance);
         }
     }
 }

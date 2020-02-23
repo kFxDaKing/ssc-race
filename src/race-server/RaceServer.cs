@@ -9,12 +9,8 @@ namespace SSC.Server
 {
     public class RaceServer : BaseScript
     {
-        private static RaceServer _instance;
-        private EventWrapper _eventWrapper;
-
-        public static RaceServer Instance => _instance;
-        public EventWrapper EventWrapper => _eventWrapper;
-        
+        public static RaceServer Instance { get; private set; }
+        public RaceEventCollection EventCollection { get; private set; }
 
         private RaceEvents raceEvents;
 
@@ -22,8 +18,8 @@ namespace SSC.Server
 
         public RaceServer()
         {
-            _instance = this;
-            _eventWrapper = new EventWrapper((name, func) => EventHandlers.Add(name, func));
+            Instance = this;
+            EventCollection = new RaceEventCollection((name, func) => EventHandlers.Add(name, func));
          
 
             raceEvents = new RaceEvents();

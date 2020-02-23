@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 
 using CitizenFX.Core;
+using SSC.Shared.Wrappers;
 using static CitizenFX.Core.Native.API;
 
 namespace SSC.Server
@@ -14,9 +15,9 @@ namespace SSC.Server
 
         public RaceEvents()
         {
-            RaceServer rs = RaceServer.Instance;
-            rs.EventWrapper.RegisterEvent<RaceHosted>(OnRaceHosted);
-            rs.EventWrapper.RegisterEvent<RaceJoined>(OnRaceJoined);
+            RaceEventCollection ec = RaceServer.Instance.EventCollection;
+            ec.RegisterEvent<RaceHosted>(OnRaceHosted);
+            ec.RegisterEvent<RaceJoined>(OnRaceJoined);
         }
 
         public void OnRaceHosted([FromSource]Player player, string trackName, string carName, int laps)
