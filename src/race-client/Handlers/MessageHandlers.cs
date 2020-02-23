@@ -1,7 +1,8 @@
-﻿using CitizenFX.Core;
-using System;
+﻿using System;
+using CitizenFX.Core;
+using SSC.Client.Util;
 
-namespace SSRC
+namespace SSC.Client.Handlers
 {
     public class MessageHandlers
     {

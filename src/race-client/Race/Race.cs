@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
 using System.Collections.Generic;
 
-using CitizenFX.Core;
 using Newtonsoft.Json;
+using CitizenFX.Core;
 
-namespace SSRC
+namespace SSC.Client.Race
 {
     public enum RaceState
     {

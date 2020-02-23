@@ -67,5 +67,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\race\race-shared\race-shared.csproj">
+      <Project>{4f9174cf-d46c-4c2c-a029-325099bdbd58}</Project>
+      <Name>race-shared</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

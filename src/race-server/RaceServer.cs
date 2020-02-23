@@ -3,9 +3,9 @@
 using CitizenFX.Core;
 using static CitizenFX.Core.Native.API;
 
-using race_shared.Wrappers;
+using SSC.Shared.Wrappers;
 
-namespace SSRC
+namespace SSC.Server
 {
     public class RaceServer : BaseScript
     {

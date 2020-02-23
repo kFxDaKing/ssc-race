@@ -1,8 +1,11 @@
-﻿using CitizenFX.Core;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Threading.Tasks;
 
-namespace SSRC
+using CitizenFX.Core;
+
+using SSC.Client.Util;
+
+namespace SSC.Client.Race
 {
     public class RaceCheckpoint
     {

@@ -1,6 +1,6 @@
 ﻿using CitizenFX.Core;
 
-namespace SSRC
+namespace SSC.Server
 {
     public enum RIState
     {

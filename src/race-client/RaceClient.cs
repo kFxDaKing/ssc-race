@@ -4,14 +4,25 @@ using System.Collections.Generic;
 
 using CitizenFX.Core;
 
-namespace SSRC
+using SSC.Shared.Wrappers;
+using SSC.Client.Handlers;
+using SSC.Client.Race;
+using SSC.Client.Util;
+
+namespace SSC.Client
 {
     public class RaceClient : BaseScript
     {
+        private static RaceClient _instance;
+        private EventWrapper _eventWrapper;
+
+        public static RaceClient Instance => _instance;
+        public EventWrapper EventWrapper => _eventWrapper;
+
         private MessageHandlers messageHandler;
         private RaceEventHandlers raceEventHandlers = new RaceEventHandlers();
 
-        private Race CurrentRace;
+        private Race.Race CurrentRace;
         private bool IsInCreator = false;
 
         public RaceClient()
@@ -60,7 +71,7 @@ namespace SSRC
 
             string raceName = (string)args[0];
 
-            CurrentRace = new Race(raceName, true);
+            CurrentRace = new Race.Race(raceName, true);
             ChatHelper.SendMessage(nameof(RaceClient), "A new race has been created!", 0, 255, 0);
         }
 

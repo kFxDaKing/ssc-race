@@ -3,7 +3,7 @@
 using CitizenFX.Core;
 using static CitizenFX.Core.Native.API;
 
-namespace SSRC
+namespace SSC.Server
 {
     public class RaceEvents
     {

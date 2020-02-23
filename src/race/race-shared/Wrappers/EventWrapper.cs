@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace race_shared.Wrappers
+namespace SSC.Shared.Wrappers
 {
     public delegate void EventWrapperBackingFunction(string eventName, Delegate backingFunction);
 

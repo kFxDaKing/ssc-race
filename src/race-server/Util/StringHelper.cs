@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SSRC
+namespace SSC.Server
 {
     public static class StringHelper
     {

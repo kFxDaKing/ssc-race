@@ -1,4 +1,4 @@
-﻿namespace SSRC
+﻿namespace SSC.Client.Race
 {
     public class Racer
     {

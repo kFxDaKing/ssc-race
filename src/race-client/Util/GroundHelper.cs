@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using static CitizenFX.Core.Native.API;
 
-namespace SSRC
+namespace SSC.Client.Util
 {
     public static class GroundHelper
     {

@@ -1,6 +1,6 @@
 ﻿using CitizenFX.Core;
 
-namespace SSRC
+namespace SSC.Client.Util
 {
     public static class ChatHelper
     {

@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Threading.Tasks;
 
-namespace SSRC
+namespace SSC.Client.Race
 {
     public class RaceStart
     {

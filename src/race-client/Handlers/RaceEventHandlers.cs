@@ -1,4 +1,6 @@
-﻿namespace SSRC
+﻿using SSC.Client.Util;
+
+namespace SSC.Client.Handlers
 {
     public class RaceEventHandlers
     {
