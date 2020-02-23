@@ -8,7 +8,7 @@ namespace SSRC
 {
     public class RaceClient : BaseScript
     {
-        private MessageEventHandlers messageEventHandler = new MessageEventHandlers();
+        private MessageHandlers messageHandler;
         private RaceEventHandlers raceEventHandlers = new RaceEventHandlers();
 
         private Race CurrentRace;
@@ -16,9 +16,7 @@ namespace SSRC
 
         public RaceClient()
         {
-            EventHandlers.Add("ssrc.race::rejected", new Action<string, string>(
-               messageEventHandler.OnActionRejected
-            ));
+            messageHandler = new MessageHandlers(EventHandlers);
 
             EventHandlers.Add("ssrc.race::announceRace", new Action<string>(
                 raceEventHandlers.OnRaceAnnounced
@@ -50,20 +48,20 @@ namespace SSRC
         {
             if (CurrentRace != null)
             {
-                ChatHelper.Print(nameof(RaceClient), "Race is already created!", 255, 0, 0);
+                ChatHelper.SendMessage(nameof(RaceClient), "Race is already created!", 255, 0, 0);
                 return;
             }
 
             if (args.Count < 1)
             {
-                ChatHelper.Print(nameof(RaceClient), "Please specify a track name.", 255, 0, 0);
+                ChatHelper.SendMessage(nameof(RaceClient), "Please specify a track name.", 255, 0, 0);
                 return;
             }
 
             string raceName = (string)args[0];
 
             CurrentRace = new Race(raceName, true);
-            ChatHelper.Print(nameof(RaceClient), "A new race has been created!", 0, 255, 0);
+            ChatHelper.SendMessage(nameof(RaceClient), "A new race has been created!", 0, 255, 0);
         }
 
         [Command("rc_cp")]
@@ -71,7 +69,7 @@ namespace SSRC
         {
             if (CurrentRace == null)
             {
-                ChatHelper.Print(nameof(RaceClient), "Cannot add checkpoint if race doesn't exist.", 255, 0, 0);
+                ChatHelper.SendMessage(nameof(RaceClient), "Cannot add checkpoint if race doesn't exist.", 255, 0, 0);
                 return;
             }
 
@@ -84,7 +82,7 @@ namespace SSRC
         {
             if (CurrentRace == null)
             {
-                ChatHelper.Print(nameof(RaceClient), "Cannot add start if race doesn't exist.", 255, 0, 0);
+                ChatHelper.SendMessage(nameof(RaceClient), "Cannot add start if race doesn't exist.", 255, 0, 0);
                 return;
             }
 
@@ -99,7 +97,7 @@ namespace SSRC
         {
             if (CurrentRace == null)
             {
-                ChatHelper.Print(nameof(RaceClient), "Cannot save track if race hasn't been created.", 255, 0, 0);
+                ChatHelper.SendMessage(nameof(RaceClient), "Cannot save track if race hasn't been created.", 255, 0, 0);
                 return;
             }
 
@@ -117,7 +115,7 @@ namespace SSRC
         {
             if (args.Count < 3)
             {
-                ChatHelper.Print(nameof(RaceClient), "Error, missing parameters, example: /race <track> <car> <laps>", 255, 0, 0);
+                ChatHelper.SendMessage(nameof(RaceClient), "Error, missing parameters, example: /race <track> <car> <laps>", 255, 0, 0);
                 return;
             }
 
@@ -133,7 +131,7 @@ namespace SSRC
         {
             if (args.Count < 1)
             {
-                ChatHelper.Print(nameof(RaceClient), "Error, missing parameters, example: /join <id>", 255, 0, 0);
+                ChatHelper.SendMessage(nameof(RaceClient), "Error, missing parameters, example: /join <id>", 255, 0, 0);
                 return;
             }
 
@@ -141,7 +139,7 @@ namespace SSRC
 
             if (string.IsNullOrEmpty(code))
             {
-                ChatHelper.Print(nameof(RaceClient), "Error, the join code is invalid!", 255, 0, 0);
+                ChatHelper.SendMessage(nameof(RaceClient), "Error, the join code is invalid!", 255, 0, 0);
                 return;
             }
 

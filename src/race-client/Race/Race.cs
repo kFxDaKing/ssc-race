@@ -58,12 +58,12 @@ namespace SSRC
 
         public void Save()
         {
-            object payloadObject = new object[] {
+            object trackDataObject = new object[] {
                 StartingPoints,
                 Checkpoints
             };
 
-            BaseScript.TriggerServerEvent("ssrc.race::savetrack", RaceName, JsonConvert.SerializeObject(payloadObject));
+            BaseScript.TriggerServerEvent("ssrc.race::savetrack", RaceName, JsonConvert.SerializeObject(trackDataObject));
         }
 
         public void AddCheckpoint(RaceCheckpoint cp)

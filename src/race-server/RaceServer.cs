@@ -3,12 +3,18 @@
 using CitizenFX.Core;
 using static CitizenFX.Core.Native.API;
 
+using race_shared.Wrappers;
+
 namespace SSRC
 {
     public class RaceServer : BaseScript
     {
         private static RaceServer _instance;
+        private EventWrapper _eventWrapper;
+
         public static RaceServer Instance => _instance;
+        public EventWrapper EventWrapper => _eventWrapper;
+        
 
         private RaceEvents raceEvents;
 
@@ -17,6 +23,8 @@ namespace SSRC
         public RaceServer()
         {
             _instance = this;
+            _eventWrapper = new EventWrapper((name, func) => EventHandlers.Add(name, func));
+         
 
             raceEvents = new RaceEvents();
 
@@ -27,12 +35,6 @@ namespace SSRC
             );
 
             EventHandlers.Add("ssrc.race::startRace", new Action<Player, string, string, int>(CreateRace));
-        }
-
-        public void RegisterEvent(string name, Delegate delegateInstance)
-        {
-            EventHandlers.Add(name, delegateInstance);
-            Debug.WriteLine($"^2{nameof(RaceServer)} - Registered event: {name}^7");
         }
 
         public void SaveTrack(string name, string json)

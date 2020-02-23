@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SSRC</RootNamespace>
-    <AssemblyName>SSRC.Race.Server.net</AssemblyName>
+    <AssemblyName>SSC.Race.Server.net</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Events\EventWrapper.cs" />
     <Compile Include="Events\RaceEvents.cs" />
     <Compile Include="RaceCollection.cs" />
     <Compile Include="RaceInstance.cs" />
@@ -56,6 +55,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\race\race-shared\race-shared.csproj">
+      <Project>{4f9174cf-d46c-4c2c-a029-325099bdbd58}</Project>
+      <Name>race-shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

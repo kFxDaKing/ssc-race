@@ -14,8 +14,9 @@ namespace SSRC
 
         public RaceEvents()
         {
-            EventWrapper.RegisterEvent<RaceHosted>(OnRaceHosted);
-            EventWrapper.RegisterEvent<RaceJoined>(OnRaceJoined);
+            RaceServer rs = RaceServer.Instance;
+            rs.EventWrapper.RegisterEvent<RaceHosted>(OnRaceHosted);
+            rs.EventWrapper.RegisterEvent<RaceJoined>(OnRaceJoined);
         }
 
         public void OnRaceHosted([FromSource]Player player, string trackName, string carName, int laps)
@@ -43,7 +44,7 @@ namespace SSRC
             //TODO: Check if the race isn't overlapping another track (IsRacePhysciallyPossible).
             RaceInstances.Add(raceCode, instance);
 
-            Debug.WriteLine($"Created race with RID {raceCode}");
+            Debug.WriteLine($"New race created race with RaceID {raceCode}");
         }
 
         public void OnRaceJoined([FromSource]Player player, string code)

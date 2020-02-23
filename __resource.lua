@@ -2,10 +2,14 @@ files {
     "Newtonsoft.Json.dll"
 }
 
+shared_scripts {
+    "SSC.Race.Shared.net.dll"
+}
+
 client_scripts {
-    "SSRC.Race.Client.net.dll"
+    "SSC.Race.Client.net.dll"
 }
 
 server_scripts {
-    "SSRC.Race.Server.net.dll"
+    "SSC.Race.Server.net.dll"
 }

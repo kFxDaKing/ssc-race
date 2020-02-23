@@ -23,7 +23,7 @@ namespace SSRC
                 {
                     if ((GetGameTimer() - startTime) > 5000)
                     {
-                        ChatHelper.Print(nameof(GroundHelper), $"Failed to find ground for position X: {inP.X}, Y: {inP.Y}, Z: {inP.Z}");
+                        ChatHelper.SendMessage(nameof(GroundHelper), $"Failed to find ground for position X: {inP.X}, Y: {inP.Y}, Z: {inP.Z}");
 
                         searching = false;
                     }
