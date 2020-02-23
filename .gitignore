@@ -1,0 +1,13 @@
+# Remove tracks folder.
+[Tt]racks/
+
+# Remove visual studio related folders.
+.vs/
+[Bb]in/
+[Oo]bj/
+packages/
+
+
+# Don't include compiled binaries.
+*.dll
+*.xml
