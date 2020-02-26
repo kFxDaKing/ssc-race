@@ -5,9 +5,10 @@ using System.Collections.Generic;
 using CitizenFX.Core;
 
 using SSC.Shared.Wrappers;
-using SSC.Client.Handlers;
+
 using SSC.Client.Race;
 using SSC.Client.Util;
+using SSC.Client.Handlers;
 
 namespace SSC.Client
 {
@@ -16,7 +17,7 @@ namespace SSC.Client
         public static RaceClient Instance { get; private set; }
         public RaceEventCollection EventCollection { get; private set; }
 
-        private MessageHandlers messageHandlers;
+        private NotificationEvents messageHandlers;
         private RaceEventHandlers raceEventHandlers;
 
         private Race.Race CurrentRace;
@@ -25,9 +26,12 @@ namespace SSC.Client
         public RaceClient()
         {
             Instance = this;
-            EventCollection = new RaceEventCollection((name, func) => EventHandlers.Add(name, func));
 
-            messageHandlers = new MessageHandlers();
+            EventCollection = new RaceEventCollection(
+                EventHandlers.Add, TriggerEvent, TriggerServerEvent    
+            );
+
+            messageHandlers = new NotificationEvents();
             raceEventHandlers = new RaceEventHandlers();
 
             EventHandlers.Add("ssrc.race::announceRace", new Action<string>(

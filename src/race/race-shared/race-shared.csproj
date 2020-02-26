@@ -43,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Wrappers\CommandWrapper.cs" />
+    <Compile Include="Static\RaceEvents.cs" />
+    <Compile Include="Util\StringUtil.cs" />
+    <Compile Include="Wrappers\RaceCommandCollection.cs" />
     <Compile Include="Wrappers\RaceEventCollection.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

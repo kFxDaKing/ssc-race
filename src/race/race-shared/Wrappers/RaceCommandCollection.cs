@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SSC.Shared.Wrappers
 {
-    class CommandWrapper
+    public class RaceCommandCollection
     {
     }
 }

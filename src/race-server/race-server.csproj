@@ -51,7 +51,6 @@
     <Compile Include="RaceInstance.cs" />
     <Compile Include="RaceServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\StringHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

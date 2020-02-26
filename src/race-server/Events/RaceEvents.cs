@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 
 using CitizenFX.Core;
-using SSC.Shared.Wrappers;
 using static CitizenFX.Core.Native.API;
+
+using SSC.Shared.Util;
+using SSC.Shared.Wrappers;
 
 namespace SSC.Server
 {
@@ -24,11 +26,6 @@ namespace SSC.Server
         {
             Debug.WriteLine($"{nameof(RaceEvents)} - Hosting race with track {trackName} with car {carName} for {laps} laps.");
 
-            //TODO: Preload all the available tracks, so we can preemtively deny invalid ones.
-            //      Also comes in handy when we need to enumerate them all for like a selection menu.
-
-            //TODO: if track is not valid then reject.
-
             if (laps <= 0)
             {
                 //TODO: Notify the command invoker something went wrong.
@@ -39,7 +36,7 @@ namespace SSC.Server
             //TODO: Do a check client-side to see if the vehicle requested is valid. Otherwise we don't annoy the server with it.
             //      Server can't check this unless we have JuanSink.
 
-            string raceCode = StringHelper.GetRandomHexString(4);
+            string raceCode = StringUtil.GetRandomHexString(4);
             RaceInstance instance = new RaceInstance(trackName, carName, laps);
 
             //TODO: Check if the race isn't overlapping another track (IsRacePhysciallyPossible).

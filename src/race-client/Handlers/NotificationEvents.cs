@@ -3,16 +3,16 @@ using CitizenFX.Core;
 using SSC.Client.Util;
 using SSC.Shared.Wrappers;
 
+using SSC.Shared.Static;
+
 namespace SSC.Client.Handlers
 {
-    public class MessageHandlers
+    public class NotificationEvents
     {
-        public delegate void MessageActionRejected(string action, string reason);
-
-        public MessageHandlers()
+        public NotificationEvents()
         {
             RaceEventCollection ev = RaceClient.Instance.EventCollection;
-            ev.RegisterEvent<MessageActionRejected>(OnActionRejected);
+            ev.RegisterEvent<RaceStatic.EventClientNotificationRejected>(OnActionRejected);
         }
         
         public void OnActionRejected(string action, string reason)
