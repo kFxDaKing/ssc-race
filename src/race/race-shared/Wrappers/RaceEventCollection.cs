@@ -35,6 +35,5 @@ namespace SSC.Shared.Wrappers
             else
                 triggerLocalProxy(eventName, args);
         }
-
     }
 }

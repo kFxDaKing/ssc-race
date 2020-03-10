@@ -3,12 +3,14 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 
 using CitizenFX.Core;
+using static CitizenFX.Core.Native.API;
 
 using SSC.Shared.Wrappers;
 
 using SSC.Client.Race;
 using SSC.Client.Util;
-using SSC.Client.Handlers;
+using SSC.Client.Events;
+using SSC.Client.Commands;
 
 namespace SSC.Client
 {
@@ -16,9 +18,7 @@ namespace SSC.Client
     {
         public static RaceClient Instance { get; private set; }
         public RaceEventCollection EventCollection { get; private set; }
-
-        private NotificationEvents messageHandlers;
-        private RaceEventHandlers raceEventHandlers;
+        public RaceCommandCollection CommandCollection { get; private set; }
 
         private Race.Race CurrentRace;
         private bool IsInCreator = false;
@@ -27,16 +27,19 @@ namespace SSC.Client
         {
             Instance = this;
 
+            CommandCollection = new RaceCommandCollection(
+                (name, callback, restricted) => { RegisterCommand(name, callback, restricted); }
+            );
+
+            new CreatorCommands();
+
             EventCollection = new RaceEventCollection(
                 EventHandlers.Add, TriggerEvent, TriggerServerEvent    
             );
 
-            messageHandlers = new NotificationEvents();
-            raceEventHandlers = new RaceEventHandlers();
+            new NotificationEvents();
+            new RaceEvents();
 
-            EventHandlers.Add("ssrc.race::announceRace", new Action<string>(
-                raceEventHandlers.OnRaceAnnounced
-            ));
         }
 
 

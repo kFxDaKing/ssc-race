@@ -1,25 +1,28 @@
 ﻿using System.Collections.Generic;
 
 using CitizenFX.Core;
-using static CitizenFX.Core.Native.API;
 
 using SSC.Shared.Util;
 using SSC.Shared.Wrappers;
+
+using static CitizenFX.Core.Native.API;
+using static SSC.Shared.Static.RaceStatic;
 
 namespace SSC.Server
 {
     public class RaceEvents
     {
-        delegate void RaceHosted(Player player, string track, string car, int laps);
-        delegate void RaceJoined(Player player, string code);
+        //delegate void RaceHosted(Player player, string track, string car, int laps);
+        //delegate void RaceJoined(Player player, string code);
 
         private Dictionary<string, RaceInstance> RaceInstances = new Dictionary<string, RaceInstance>();
 
         public RaceEvents()
         {
-            RaceEventCollection ec = RaceServer.Instance.EventCollection;
-            ec.RegisterEvent<RaceHosted>(OnRaceHosted);
-            ec.RegisterEvent<RaceJoined>(OnRaceJoined);
+            RaceEventCollection ev = RaceServer.Instance.EventCollection;
+
+            ev.RegisterEvent<EventServerRaceHosted<Player>>(OnRaceHosted);
+            ev.RegisterEvent<EventServerRaceJoined<Player>>(OnRaceJoined);
         }
 
         public void OnRaceHosted([FromSource]Player player, string trackName, string carName, int laps)

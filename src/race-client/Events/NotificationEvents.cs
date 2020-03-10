@@ -1,18 +1,17 @@
-﻿using System;
-using CitizenFX.Core;
-using SSC.Client.Util;
+﻿using SSC.Client.Util;
+
 using SSC.Shared.Wrappers;
+using static SSC.Shared.Static.RaceStatic;
 
-using SSC.Shared.Static;
-
-namespace SSC.Client.Handlers
+namespace SSC.Client.Events
 {
     public class NotificationEvents
     {
         public NotificationEvents()
         {
             RaceEventCollection ev = RaceClient.Instance.EventCollection;
-            ev.RegisterEvent<RaceStatic.EventClientNotificationRejected>(OnActionRejected);
+
+            ev.RegisterEvent<EventClientNotificationRejected>(OnActionRejected);
         }
         
         public void OnActionRejected(string action, string reason)

@@ -7,7 +7,7 @@
     <ProjectGuid>{22B8AB8B-ACA1-4EED-A51D-A695FE54BA3D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SSRC</RootNamespace>
+    <RootNamespace>SSC.Server</RootNamespace>
     <AssemblyName>SSC.Race.Server.net</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

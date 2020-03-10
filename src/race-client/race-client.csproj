@@ -7,7 +7,7 @@
     <ProjectGuid>{82C50D15-8712-433F-A6E8-19B3B8FC5EF5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SSRC</RootNamespace>
+    <RootNamespace>SSC.Client</RootNamespace>
     <AssemblyName>SSC.Race.Client.net</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -53,8 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Handlers\NotificationEvents.cs" />
-    <Compile Include="Handlers\RaceEventHandlers.cs" />
+    <Compile Include="Commands\CreatorCommands.cs" />
+    <Compile Include="Events\NotificationEvents.cs" />
+    <Compile Include="Events\RaceEvents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RaceClient.cs" />
     <Compile Include="Race\Race.cs" />
